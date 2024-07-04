@@ -26,7 +26,7 @@ def canUnlockAll(boxes):
         else:
             locked_boxes[index] = box
     new_keys = recheck_locked_boxes(locked_boxes, keys)
-    while (len(new_keys) > 0):
+    while new_keys:
         keys.update(new_keys)
         new_keys = recheck_locked_boxes(locked_boxes, keys)
 
