@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Lock Boxes Problem"""
+
 def canUnlockAll(boxes):
     """ canUnlockAll can unlock all box function"""
     keys = set()
