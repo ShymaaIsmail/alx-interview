@@ -15,6 +15,8 @@ def recheck_locked_boxes(boxes, keys):
 
 def canUnlockAll(boxes):
     """ canUnlockAll can unlock all box function"""
+    if (isinstance(boxes) is not list or len(boxes) == 0):
+        return False
     keys = set()
     keys.add(0)
     new_keys = set()
