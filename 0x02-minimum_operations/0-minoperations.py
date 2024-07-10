@@ -4,13 +4,17 @@
 
 def minOperations(n: int) -> int:
     """Return the minimum number of operations to reach n characters"""
-    if n > 0:
-        dp = [float('inf')] * (n + 1)
-        dp[1] = 0
-        for i in range(2, n + 1):
-            for j in range(1, i // 2 + 1):
-                if i % j == 0:
-                    dp[i] = min(dp[i], dp[j] + i // j)
-        return dp[n]
-    else:
-        return 0
+    operations_count = 0
+    total = 0
+    if 1 <= n <= 10**6:
+        while (total < n):
+            if n % 2 == 0 and total % 2 == 0 or n % 2 != 0 and total % 2 != 0:
+                temp_total = total * 2 if total > 0 else total + 1
+                total = temp_total if temp_total <= n else total + 1
+            else:
+                total += 1
+            operations_count += 1
+
+            print(total)
+
+    return operations_count
