@@ -4,7 +4,7 @@
 
 def minOperations(n: int) -> int:
     """Return the minimum number of operations to reach n characters"""
-    if 1 <= n <= 10**6:
+    if n > 0:
         dp = [float('inf')] * (n + 1)
         dp[1] = 0
         for i in range(2, n + 1):
