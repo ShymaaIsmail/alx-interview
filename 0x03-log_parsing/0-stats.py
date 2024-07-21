@@ -38,6 +38,7 @@ class LogParser:
 
     def process_line(self, line):
         """Process each line of the log."""
+        line = line.strip()
         if line:
             match = re.match(self.log_pattern, line)
             if match:
@@ -52,7 +53,7 @@ class LogParser:
 
     def print_remaining_statistics(self):
         """Print remaining statistics after finishing the input."""
-        if self.line_count % 10 != 0:
+        if self.line_count % 10 != 0 or self.line_count == 0:
             self.print_statistics()
 
     def run(self):
