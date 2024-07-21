@@ -45,11 +45,10 @@ class LogParser:
                 status = log_info['status']
                 self.statistics[status] = self.statistics.get(status, 0) + 1
                 self.file_size += int(log_info['size'])
-            self.line_count += 1
-
-            # Print statistics every 10 lines
-            if self.line_count % 10 == 0:
-                self.print_statistics()
+                self.line_count += 1
+                # Print statistics every 10 lines
+                if self.line_count % 10 == 0:
+                    self.print_statistics()
 
     def print_remaining_statistics(self):
         """Print remaining statistics after finishing the input."""
