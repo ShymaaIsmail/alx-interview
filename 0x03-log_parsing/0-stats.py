@@ -38,17 +38,18 @@ class LogParser:
 
     def process_line(self, line):
         """Process each line of the log."""
-        match = re.match(self.log_pattern, line)
-        if match:
-            log_info = match.groupdict()
-            status = log_info['status']
-            self.statistics[status] = self.statistics.get(status, 0) + 1
-            self.file_size += int(log_info['size'])
-        self.line_count += 1
+        if line:
+            match = re.match(self.log_pattern, line)
+            if match:
+                log_info = match.groupdict()
+                status = log_info['status']
+                self.statistics[status] = self.statistics.get(status, 0) + 1
+                self.file_size += int(log_info['size'])
+            self.line_count += 1
 
-        # Print statistics every 10 lines
-        if self.line_count % 10 == 0:
-            self.print_statistics()
+            # Print statistics every 10 lines
+            if self.line_count % 10 == 0:
+                self.print_statistics()
 
     def print_remaining_statistics(self):
         """Print remaining statistics after finishing the input."""
