@@ -58,10 +58,14 @@ class LogParser:
 
     def run(self):
         """Run the log parser."""
-        for line in sys.stdin:
-            self.process_line(line)
-        if self.line_count > 0:
-            self.print_remaining_statistics()
+        try:
+            for line in sys.stdin:
+                self.process_line(line)
+            if self.line_count > 0:
+                self.print_remaining_statistics()
+        except KeyboardInterrupt:
+            self.print_statistics()
+            raise
 
 
 if __name__ == '__main__':
