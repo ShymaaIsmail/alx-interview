@@ -60,7 +60,8 @@ class LogParser:
         """Run the log parser."""
         for line in sys.stdin:
             self.process_line(line)
-        self.print_remaining_statistics()
+        if self.line_count > 0:
+            self.print_remaining_statistics()
 
 
 if __name__ == '__main__':
