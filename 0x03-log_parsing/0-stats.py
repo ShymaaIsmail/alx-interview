@@ -50,12 +50,16 @@ class LogParser:
         if self.line_count % 10 == 0:
             self.print_statistics()
 
+    def print_remaining_statistics(self):
+        """Print remaining statistics after finishing the input."""
+        if self.line_count % 10 != 0:
+            self.print_statistics()
+
     def run(self):
         """Run the log parser."""
         for line in sys.stdin:
-            if line.rstrip() == 'q':
-                break
             self.process_line(line)
+        self.print_remaining_statistics()
 
 
 if __name__ == '__main__':
