@@ -17,7 +17,7 @@ def isWinner(x, nums):
     """Determine who wins the most rounds in the prime game."""
     max_n = max(nums) if nums else 0
     primes = sieve_of_eratosthenes(max_n)
-    
+
     def play_game(n):
         """Simulate a single game of prime removal with maximum number n."""
         if n < 2:
@@ -27,7 +27,8 @@ def isWinner(x, nums):
         turn = 0  # 0 for Maria, 1 for Ben
         while remaining:
             # Find the smallest prime
-            chosen_prime = next((p for p in primes if p <= n and p in remaining),
+            chosen_prime = next((p for p in primes
+                                if p <= n and p in remaining),
                                 None)
 
             if chosen_prime is None:
@@ -37,7 +38,6 @@ def isWinner(x, nums):
             # Remove chosen prime and its multiples
             to_remove = set(p for p in remaining if p % chosen_prime == 0)
             remaining.difference_update(to_remove)
-            
             # Switch turn
             turn = 1 - turn
         return 'Ben' if turn == 0 else 'Maria'
